@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, intial-scale=1.0">
+	<title>Inventory helper</title>
+	<!-- BOOTSTRAP -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+	<!-- FONT AWESOME -->
+	<link rel="stylesheet" href="https://maxcdn.boostrapcdn.com/font-awesome/4.6.2/css/font-awesome.min.css">
+
+	<!-- JQUERY -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+</head>	
+<body>
+<div class="panel panel-default">
+	<form method="post" action="/items">
+  	<!-- Default panel contents -->
+  	<div class="panel-heading"> Add new items </div>
+  	<div class="panel-body">
+  		<div class="input-group">
+			<input type="text" name="name" value="" placeholder="Product name" class="form-control"/>
+		</div>
+  		<div class="input-group">
+  			<input type="number" name="price" value="" placeholder="Product price" class="form-control" />
+  		</div>
+  		<div class="input-group">
+  			<input type="number" name="sizeCount" value="" placeholder="Product size count" class="form-control" />
+  		</div>
+  		<div class="input-group">
+  			<div class="dropdown">
+			  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" name="provenance">
+			    Dropdown
+			    <span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+			    <li><a href="#">QC</a></li>
+			    <li><a href="#">International</a></li>
+			  </ul>
+			</div>
+  		</div>	
+  		<div class="input-group">
+  			<div class="dropdown">
+			  <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" name="category">
+			    Dropdown
+			    <span class="caret"></span>
+			  </button>
+			  <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+			    <li><a href="#">Fruits</a></li>
+			    <li><a href="#">Vegetables</a></li>
+			    <li><a href="#">Mushrooms</a></li>
+			    <li><a href="#">Other</a></li>
+			  </ul>
+			</div>
+  		</div>
+  	</div>
+  	<input type="submit" value="submit" class="form-control"/>
+  	</form>
+</div>
+
+<div class="panel panel-default">
+  <!-- Default panel contents -->
+  <div class="panel-heading">Panel heading</div>
+
+  <!-- Table -->
+  <table class="table">
+  	<thead>
+  		<tr>
+  			<th>Name</th>
+  			<th>Price</th>
+  			<th>Size Count</th>
+  		</tr>
+  	</thead>
+  	<tbody>
+  		{{#items}}
+  		<tr>
+  			<td><a href="itemdisplay/{{id}}">{{name}}</a></td>
+  			<td><a href="itemdisplay/{{id}}">{{price}}</a></td>
+  			<td><a href="itemdisplay/{{id}}">{{sizeCount}}</a></td>
+  		</tr>
+  		{{/items}}
+  	</tbody>
+  </table>
+</div>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</body>
+</html>

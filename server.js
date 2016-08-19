@@ -4,18 +4,33 @@ var _ = require('underscore');
 var fs = require('fs');
 var path = require('path');
 var moment = require('moment');
+var hoganExpress = require('hogan-express');
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://admin:admin123#@ds139645.mlab.com:39645/inventorysecondlife');
+mongoose.connect('mongodb://admin:admin123#@ds145325.mlab.com:45325/heroku_xxl2bf43');
+
+var nodemailer = require('nodemailer');
+var smtpTransport = require('nodemailer-smtp-transport');
 
 var app = express();
+
+app.set('views', __dirname + '/views');
+app.set('view engine', 'html');
+app.enable('view cache');
+app.engine('html', hoganExpress);
+
 var PORT = process.env.PORT || 3000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
 
+
+
 fs.readdirSync('./controllers').forEach(function(file) {
 	if(file.substr(-3) == '.js') {
-		route = require('./controllers' + file)(app, _, moment);
+		try {
+			route = require('./controllers/' + file)(app, _, moment);
+		}
+		catch(e) {console.log(e);}
 	}
 });
 
