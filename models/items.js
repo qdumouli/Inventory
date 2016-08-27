@@ -1,13 +1,11 @@
 var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
 
-var itemsSchema = new Schema({
+var itemsSchema = new mongoose.Schema({
 	name: String,
 	price: Number,
 	sizeCount: Number,
 	provenance: String,
-	Category: String,
-	quantity: Number
+	category: String
 });
 
 module.exports = mongoose.model('Items', itemsSchema);
